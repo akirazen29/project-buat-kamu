@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>Konfirmasi Pilihan Dengan Suara</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+      text-align: center;
+      background-color: white;
+      color: black;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      transition: background-color 1s ease;
+    }
+    #gambarTampil, #teksKasarp {
+      display: none;
+      opacity: 0;
+      transition: opacity 1s ease;
+      max-width: 90%;
+      height: auto;
+      font-size: 24px;
+    }
+    button {
+      padding: 10px 20px;
+      margin: 10px;
+      font-size: 18px;
+      cursor: pointer;
+      transition: transform 0.2s;
+    }
+    button:hover {
+      transform: scale(1.1);
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Kamu yakin mau memilih opsi?</h1>
+
+  <div id="opsi">
+    <button onclick="pilih('iya')">Iyaa</button>
+    <button onclick="pilih('tidak')">Tidak</button>
+  </div>
+
+  <img id="gambarTampil" src="IMG-20250422-WA0020.jpg" alt="Gambar">
+
+  <div id="teksKasarp">parah sihh ga menghargai _-</div>
+
+  <!-- Audio -->
+  <audio id="suaraIya" src="whoosh.mp3"></audio>
+  <audio id="suaraTidak" src="error.mp3"></audio>
+
+  <script>
+    function pilih(jawaban) {
+      document.getElementById('opsi').style.display = 'none';
+      document.querySelector('h1').style.display = 'none';
+
+      if (jawaban === 'iya') {
+        document.body.style.backgroundColor = 'black';
+        let gambar = document.getElementById('gambarTampil');
+        gambar.style.display = 'block';
+        setTimeout(() => {
+          gambar.style.opacity = 1;
+        }, 100);
+
+        // Mainkan suara whoosh
+        document.getElementById('suaraIya').play();
+        
+      } else {
+        let teks = document.getElementById('teksKasarp');
+        teks.style.display = 'block';
+        setTimeout(() => {
+          teks.style.opacity = 1;
+        }, 100);
+
+        // Mainkan suara error
+        document.getElementById('suaraTidak').play();
+      }
+    }
+  </script>
+
+</body>
+</html>
+
+
